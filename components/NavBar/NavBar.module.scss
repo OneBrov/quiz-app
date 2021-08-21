@@ -1,0 +1,28 @@
+.nav {
+    background: #EA304C;
+    color: #FFFFFF;
+    max-height: 80px;
+    height: 80px;
+
+    h1 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+
+    }
+    h2 {
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 42px;
+        cursor: pointer;
+    }
+}
+
+.stroke {
+    border: 1px solid #000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding: 5px;
+}

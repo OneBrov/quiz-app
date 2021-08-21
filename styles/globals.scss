@@ -1,0 +1,66 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #FBFAD9;
+
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  main {
+      background: #FBFAD9 !important;
+  }
+}
+
+
+#__next{
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.cur-p {
+  cursor: pointer;
+}
+
+.h100-vh{
+  height: 100vh;
+}
+
+.link {
+  color: #5579D6;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: darken($color: #5579D6, $amount: 10)
+  }
+}
+
+
+.field {
+  border-radius: 10px;
+  outline: 10px;
+  padding: 3px 5px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid black;
+  &:active,
+  &:focus {
+    box-shadow: 0 0 5px #5579D6;
+  }
+}
+
+.animatedButton {
+    cursor: pointer;
+    opacity: 0.9;
+    transition: opacity 0.1s ease-in-out;
+    &:hover,
+    &:active {
+        opacity: 1;
+    }
+}

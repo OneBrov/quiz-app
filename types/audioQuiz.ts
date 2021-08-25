@@ -1,6 +1,6 @@
 export interface AudioContentState {
     id: any
-    _id: string
+    _id?: string
     answer: string
     secondaryAnswers: string[]
     audioURL: string

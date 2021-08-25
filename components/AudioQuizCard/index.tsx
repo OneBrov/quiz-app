@@ -29,7 +29,6 @@ export const AudioQuizCard: React.FC<AudioQuizCardProps> = (
         if ( value.toLocaleLowerCase() === answer.toLocaleLowerCase() || (value.length && possibleAnswers.indexOf(value.toLocaleLowerCase())!==-1 )) {
             addComplete && !isSuccess && addComplete(prev => prev + 1)
             setIsSuccess(true)
-            
         }
     }, [value, answer, possibleAnswers, addComplete, showAnswer])
 

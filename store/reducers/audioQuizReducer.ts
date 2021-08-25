@@ -1,5 +1,5 @@
 import { audioQuizAction, audioQuizActionTypes, audioQuizState } from "../../types/audioQuiz"
-
+import {AudioContentState} from '../../types/audioQuiz' 
 
 const initialState: audioQuizState = {
     name: '',

@@ -28,7 +28,7 @@ export const AudioQuizCreatedModal:React.FC<ModalProps> = ({show, onHide, succes
             <h4 className="text-center">Вы можете найти свой квиз по адресу</h4>
             <p className="text-center">
                 <Link href={successURL}>
-                    <a ><span className="link">Перейти к созданному квизу</span></a>
+                    <a><span className="link">Перейти к созданному квизу</span></a>
                 </Link>
             </p>
             </Modal.Body>

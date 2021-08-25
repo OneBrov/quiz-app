@@ -1,10 +1,12 @@
 import { HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
+import { audioQuizListReducer } from "./audioQuizListReducer";
 import { audioQuizReducer } from "./audioQuizReducer";
 
 
 const rootReducer = combineReducers({
-    audioQuiz: audioQuizReducer
+    audioQuiz: audioQuizReducer,
+    audioQuizList: audioQuizListReducer
 });
 
 export const reducer = (state, action) => {

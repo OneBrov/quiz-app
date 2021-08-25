@@ -12,6 +12,10 @@ export const setImg = (payload: string): audioQuizAction => {
     return { type: audioQuizActionTypes.SET_IMG, payload}
 }
 
+export const setImgFile = (payload: File): audioQuizAction => {
+    return { type: audioQuizActionTypes.SET_IMAGE_FILE, payload}
+}
+
 export const setAnswer = (payload: {id:number, value:string}): audioQuizAction => {
     return { type: audioQuizActionTypes.SET_ANSWER, payload}
 }
@@ -22,6 +26,10 @@ export const setSecondaryAnswers = (payload: {id:number, value:string[]}): audio
 
 export const setAudio = (payload: {id:number, value:string}): audioQuizAction => {
     return { type: audioQuizActionTypes.SET_AUDIO_URL, payload}
+}
+
+export const setAudioFile = (payload: {id: number, value: File}): audioQuizAction => {
+    return { type: audioQuizActionTypes.SET_AUDIO_FILE, payload}
 }
 
 export const addContent = (payload: number): audioQuizAction => {

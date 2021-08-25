@@ -1,0 +1,18 @@
+.contentAppear {
+    overflow: hidden;
+    transition: all ease-in-out 0.5s;
+    animation-duration: 1s;
+    animation-name: entering;
+}
+
+@keyframes entering {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+

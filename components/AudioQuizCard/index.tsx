@@ -6,15 +6,18 @@ interface AudioQuizCardProps {
     answer: string
     possibleAnswers: string[]
     audioURL: string
-    id: number
-
+    id: number,
+    addComplete?: any,
+    showAnswer?: boolean
 }
 
-export const AudioQuizCard = (
+export const AudioQuizCard: React.FC<AudioQuizCardProps> = (
     {   answer, 
         possibleAnswers=[], 
         audioURL, 
-        id
+        id,
+        addComplete,
+        showAnswer = false
     }) => {
     const [value, setValue] = React.useState<string>('')
     const [isSuccess, setIsSuccess] = React.useState<boolean>(false)
@@ -23,10 +26,12 @@ export const AudioQuizCard = (
 
     React.useEffect(()=>{
         setIsSuccess(false)
-        if (value.toLocaleLowerCase() === answer.toLocaleLowerCase() || (value.length && possibleAnswers.indexOf(value.toLocaleLowerCase())!==-1 )) {
+        if ( value.toLocaleLowerCase() === answer.toLocaleLowerCase() || (value.length && possibleAnswers.indexOf(value.toLocaleLowerCase())!==-1 )) {
+            addComplete && !isSuccess && addComplete(prev => prev + 1)
             setIsSuccess(true)
+            
         }
-    }, [value, answer, possibleAnswers])
+    }, [value, answer, possibleAnswers, addComplete, showAnswer])
 
     React.useEffect(()=>{
         setAudioPlayer(new Audio(audioURL)) 
@@ -40,7 +45,7 @@ export const AudioQuizCard = (
     const handlePlay = () => {
         try{
             if (!audioURL.length){
-                throw "Вы не добавили аудио файл"
+                throw "Аудиофайл не найден"
             }
             setIsPlay(!isPlay)
             isPlay ? audioPlayer.pause() : audioPlayer.play()
@@ -51,18 +56,21 @@ export const AudioQuizCard = (
     }
 
     return (
-        <div className={`d-flex  ${styles.card} ${isSuccess ? `${styles.success}` : ''}  `}>
-     
+        <div 
+            className={`d-flex  
+            ${styles.card} ${isSuccess ? `${styles.success}` : ''} 
+            ${(showAnswer && !isSuccess) ? styles.failed: '' } `}
+        >
             <div className={`d-flex align-items-center ${styles.indexBox}`}>
                 <span className="m-auto">{id + 1}</span>
             </div>
-            <div className={`mx-1 d-flex align-items-center ${styles.playBox}`}>
+            <div className={`px-1 d-flex align-items-center ${styles.playBox}`}>
                 <button 
-                    className={styles.mediaButton}   
+                    className={`justify-content-center d-flex ${styles.mediaButton}`}   
                     onClick={()=>handlePlay()} 
                 >
                     <Image 
-                        className={styles.audioControl}
+                        className={`${styles.audioControl}`}
                         width={70} 
                         height={70} 
                         src={isPlay ? '/static/pause.svg'  : '/static/play.svg' } 
@@ -73,9 +81,9 @@ export const AudioQuizCard = (
             <div className="w-100">
                 <input 
                     className={`${styles.inputBox}`} 
-                    value={isSuccess? answer : value }  type="text" 
+                    value={isSuccess || showAnswer? answer : value }  type="text" 
                     placeholder="Ваш ответ"
-                    disabled={isSuccess}
+                    disabled={isSuccess && value.length > 0 || showAnswer}
                     onChange={((e)=>setValue(e.target.value))}
                 />
             </div>

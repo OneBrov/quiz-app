@@ -1,0 +1,43 @@
+.score {
+    width: 150px;
+    height: 100px;
+    background: #EA304C;
+    border-radius: 10px;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 41px;
+    color: #fff;
+    position: fixed;
+    right: 40px;
+
+    p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    h2 {
+        font-weight: normal;
+        font-size: 36px;
+        line-height: 41px;
+        color: #FFFFFF;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+}
+
+.title { 
+    padding-right: 170px;
+    padding-left: 170px;
+}
+
+.completeButton {
+    background: #5579D6;
+    border-radius: 20px;
+    &:active,
+    &:hover,
+    &:focus{
+        background: #5579D6;
+    }
+}

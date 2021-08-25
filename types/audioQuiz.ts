@@ -1,13 +1,20 @@
+export interface AudioContentState {
+    id: any
+    _id: string
+    answer: string
+    secondaryAnswers: string[]
+    audioURL: string
+    audioFile? : File
+}
+
 export interface audioQuizState {
+    _id?: string
+    playCount?: number
     name: string
     tags: string[]
     imgURL: string
-    content: {
-        id: number
-        answer: string
-        secondaryAnswers: string[]
-        audioURL: string
-    }[]
+    imgFile? : File
+    content: AudioContentState[] 
 }
 
 export enum audioQuizActionTypes {
@@ -19,6 +26,18 @@ export enum audioQuizActionTypes {
     SET_ANSWER = "SET_ANSWER",
     SET_SECONDARY_ANSWERS = "SET_SECONDARY_ANSWERS",
     SET_AUDIO_URL = "SET_AUDIO_URL",
+    SET_AUDIO_FILE = "SET_AUDIO_FILE",
+    SET_IMAGE_FILE = "SET_IMAGE_FILE",
+}
+
+interface SetImgFile {
+    type: audioQuizActionTypes.SET_IMAGE_FILE,
+    payload: File
+}
+
+interface SetAudioFile {
+    type: audioQuizActionTypes.SET_AUDIO_FILE,
+    payload: {id:number, value: File}
 }
 
 interface SetNameAction {
@@ -70,3 +89,5 @@ export type audioQuizAction=
     | SetAudioURLAction
     | AddContentAction
     | RemoveContentAction
+    | SetImgFile
+    | SetAudioFile

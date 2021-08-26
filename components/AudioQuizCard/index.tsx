@@ -23,7 +23,7 @@ export const AudioQuizCard: React.FC<AudioQuizCardProps> = (
     const [isSuccess, setIsSuccess] = React.useState<boolean>(false)
     const [audioPlayer, setAudioPlayer] = React.useState(null)
     const [isPlay, setIsPlay] = React.useState<boolean>(false)
-    const [volume, setVolume] = React.useState<number>(0.5)
+    const [volume, setVolume] = React.useState(0.5)
 
 
     React.useEffect(()=>{

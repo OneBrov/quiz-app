@@ -17,6 +17,10 @@ import { AudioCompleteModal } from '../../components/modals/AudioCompleteModal'
     const [showModal, setShowModal] = React.useState<boolean>(false)
     const [showRightAnswers, setShowRightAnswers] = React.useState<boolean>(false)
 
+    const handleComplete = async () => {
+        await axios.post(process.env.AUDIO_QUIZ_URL + '/complete/' + audioQuiz._id )
+    }
+
     return (
         <MainLayout title={`Quizelny — ${quiz.name}`}>
             <AudioCompleteModal 
@@ -52,6 +56,7 @@ import { AudioCompleteModal } from '../../components/modals/AudioCompleteModal'
                     <Button disabled={showRightAnswers} onClick={()=>{
                         setShowModal(true)
                         setShowRightAnswers(true)
+                        handleComplete()
                     } }  className={styles.completeButton} variant="primary" size="lg">Завершить квиз</Button>
                 </div>
             </Container>

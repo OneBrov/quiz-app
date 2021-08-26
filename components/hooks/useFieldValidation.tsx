@@ -1,4 +1,5 @@
 import React from "react"
+import { useFileValidation } from "./useFileValidation";
 
 interface fieldProps {
     maxLength?: number,
@@ -11,7 +12,7 @@ interface returningValue {
     message: string
 }
 
-export const useFieldValidation = ({field, maxLength = 40, minLength=1}:fieldProps):returningValue => {
+export function useFieldValidation ({field, maxLength = 40, minLength=1}:fieldProps):returningValue  {
     try {
         if (field.length >= minLength && field.length <= maxLength) {
             return {isValid: true, message:''}

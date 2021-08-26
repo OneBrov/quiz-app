@@ -3,7 +3,7 @@ module.exports = {
   env: {
     SOUND_URL:'/sound',
     HOME_URL: '/',
-    SERVER_URL: "https://quizel-server.herokuapp.com/",
-    AUDIO_QUIZ_URL: "https://quizel-server.herokuapp.com/audio",
+    SERVER_URL: "http://localhost:5000/",
+    AUDIO_QUIZ_URL: "http://localhost:5000/audio",
   }
 }

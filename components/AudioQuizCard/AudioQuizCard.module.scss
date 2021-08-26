@@ -8,8 +8,6 @@
     width: 400px;
     min-height:80px;
 
-     
-  
 }
 
 .indexBox {
@@ -25,6 +23,29 @@
     min-width: 70px;
     background: #fff;
 }
+
+.range {
+    max-height: 15px;
+    line-height: 10px;
+    font-size: 10px;
+}
+
+.range input{
+	-webkit-appearance:none;
+	width: 100%;
+	height:4px;
+	border-radius:5px;
+	background-color:#EA304C;
+	outline:none;
+}
+.range input::-webkit-slider-thumb{
+	-webkit-appearance:none;
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	background-color:#a83348;
+}
+
 
 .inputBox {
     -webkit-appearance: none;

@@ -23,6 +23,8 @@ export const AudioQuizCard: React.FC<AudioQuizCardProps> = (
     const [isSuccess, setIsSuccess] = React.useState<boolean>(false)
     const [audioPlayer, setAudioPlayer] = React.useState(null)
     const [isPlay, setIsPlay] = React.useState<boolean>(false)
+    const [volume, setVolume] = React.useState<number>(0.5)
+
 
     React.useEffect(()=>{
         setIsSuccess(false)
@@ -33,21 +35,36 @@ export const AudioQuizCard: React.FC<AudioQuizCardProps> = (
     }, [value, answer, possibleAnswers, addComplete, showAnswer])
 
     React.useEffect(()=>{
-        setAudioPlayer(new Audio(audioURL)) 
+        if (audioPlayer){
+            audioPlayer.pause()
+            setIsPlay(false)
+        }
+        setAudioPlayer(new Audio(audioURL))
     }, [audioURL])
+
+    React.useEffect(()=>{
+        audioPlayer&&audioPlayer.preload
+    }, [audioPlayer])
 
     React.useEffect(()=>{
          audioPlayer && (audioPlayer.onended = () =>(setIsPlay(false)) )
     },[audioPlayer])
 
-
+    React.useEffect(()=>{
+        audioPlayer && (audioPlayer.volume = volume)
+    },[volume, audioPlayer])
+    
+    const handleStop = () => {
+        audioPlayer.pause()
+        audioPlayer.currentTime = 0
+    }
     const handlePlay = () => {
         try{
             if (!audioURL.length){
                 throw "Аудиофайл не найден"
             }
             setIsPlay(!isPlay)
-            isPlay ? audioPlayer.pause() : audioPlayer.play()
+            isPlay ? handleStop() : audioPlayer.play()
         }
         catch(err){
             alert(err)
@@ -64,18 +81,24 @@ export const AudioQuizCard: React.FC<AudioQuizCardProps> = (
                 <span className="m-auto">{id + 1}</span>
             </div>
             <div className={`px-1 d-flex align-items-center ${styles.playBox}`}>
+                <div className="d-flex flex-column ">
                 <button 
                     className={`justify-content-center d-flex ${styles.mediaButton}`}   
                     onClick={()=>handlePlay()} 
-                >
+                >   
                     <Image 
                         className={`${styles.audioControl}`}
-                        width={70} 
-                        height={70} 
+                        width={60} 
+                        height={60} 
                         src={isPlay ? '/static/pause.svg'  : '/static/play.svg' } 
                         alt="Play"
                     />
                 </button>
+                <div className={styles.range}>
+                    <input value={volume} type={"number"} min={0} max={1} step={0.1} onChange={(e)=> setVolume(e.target.value)}  className={``} type="range" />
+                </div>
+                
+                </div>
             </div>
             <div className="w-100">
                 <input 

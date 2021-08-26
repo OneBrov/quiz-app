@@ -27,7 +27,6 @@ export default function Sound() {
   const handleLoadMore = async () => {
     try {
       const {data} = await axios.get(process.env.AUDIO_QUIZ_URL + `?offset=${offset}`)
-      console.log(data)
       if (data.length === 0) {
         setHasMore(false)
       } else{ 

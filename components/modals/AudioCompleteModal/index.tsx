@@ -22,7 +22,6 @@ export const AudioCompleteModal:React.FC<AudioCompleteModalProps> =
           return `Вы набрали ${Math.round(100/size*completeCount)}%!`
         }
       }
-      console.log(size, completeCount)
     return (
         <Modal
             show={show}

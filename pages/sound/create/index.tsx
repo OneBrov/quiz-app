@@ -53,10 +53,16 @@ export default function CreateAudio() {
         setContentCount(contentCount - 1)
         removeContent(id)
     }
+    const handleSetImage = (e) => {
+        if (e.target.files.length > 0) {
+            setImgFile(e.target.files[0])
+            setImg(URL.createObjectURL(e.target.files[0]))
+        }
+    }
 
     const handleUploadQuiz = async () => {
         if (paramsValidated.map(val=> val.isValid).indexOf(false) >= 0 ) {
-            alert(paramsValidated.map(val => !val.isValid &&'\n' + val.message ))
+            alert(paramsValidated.map(val => !val.isValid ? ('\n' + val.message) : '' ))
             return
         } 
         try {
@@ -89,9 +95,7 @@ export default function CreateAudio() {
         }
        
     }
-    
-    console.log(JSON.stringify(tags))
- 
+
     
   return (
     <MainLayout  title={`Quizelny — создание квиза`}>
@@ -125,13 +129,9 @@ export default function CreateAudio() {
                             placeholder="Пример: 00s pc nintendo  "
                         />
                         <InputWithTitle 
-                            onChange={
-                                (e) => {
-                                    setImgFile(e.target.files[0])
-                                    setImg(URL.createObjectURL(e.target.files[0]))
-                                }
-                            }
+                            onChange={ (e) => handleSetImage(e) }
                             title='Изображение квиза'
+                            fileType="image/*"
                             description='Это изображение будет на заднем фоне вашего квиза. Подсказка: Используйте изображение какой-нибудь игры'
                             type="file"
                         />

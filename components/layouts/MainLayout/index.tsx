@@ -23,7 +23,7 @@ export const MainLayout:React.FC<MainLayoutProps> = (
         <> 
             <Head>
                 <title>{title}</title>
-                <meta name='description' content={'Quizelny. Здесь можно проходить уже готовые виктрорины или создать собственную.' + description}/>
+                <meta name='description' content={'Quizelny. Здесь можно проходить уже готовые викторины или создать собственную.' + description}/>
                 <meta name="robots" content="index, follow" />
                 <meta name="keywords" content={keywords || "Квизы, викторины, аудиоквизы, аудиовикторины, квизельный"} />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />

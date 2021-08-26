@@ -41,9 +41,11 @@ export const AudioInput = ({
     // },[ref])
 
     const handleAudioAdd = (e) => {
-        const url = URL.createObjectURL(e.target.files[0])
-        setAudioFile({id:id, value:e.target.files[0]})
-        setAudio({id:id, value:url})
+        if (e.target.files.length !== 0) {
+            const url = URL.createObjectURL(e.target.files[0])
+            setAudioFile({id:id, value: e.target.files[0] })
+            setAudio({id:id, value:url})
+        }
     }
 
     return (
@@ -73,6 +75,7 @@ export const AudioInput = ({
                         className="w-100 mb-3"
                         title="Аудиофайл"
                         type="file"
+                        fileType="audio/*"
                         onChange={handleAudioAdd}
                     />
                 </div>

@@ -9,10 +9,11 @@ interface InputWithTitleProps {
     placeholder?: string
     className?: string
     type?: 'text' | 'file'
+    fileType? : 'image/*' | "audio/*"
 }
 
 export const InputWithTitle:React.FC<InputWithTitleProps> = ( 
-    {value, onChange, title, description, placeholder, className, type='text'} ) => {
+    {value, onChange, title, description, placeholder, className, type='text', fileType=null} ) => {
     return (
         <div className={clsx('d-flex', 'flex-column', className)}>
             <h2 className="mb-0">{title}</h2>
@@ -20,6 +21,7 @@ export const InputWithTitle:React.FC<InputWithTitleProps> = (
             <input 
                 className="mt-1 mx-4 field"
                 type={type}
+                accept={fileType && fileType}
                 placeholder={placeholder ? placeholder : ''} 
                 value={value}
                 onChange={onChange} 

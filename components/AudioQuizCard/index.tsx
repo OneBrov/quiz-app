@@ -95,7 +95,7 @@ export const AudioQuizCard: React.FC<AudioQuizCardProps> = (
                     />
                 </button>
                 <div className={styles.range}>
-                    <input value={volume} type={"number"} min={0} max={1} step={0.1} onChange={(e)=> setVolume(e.target.value)}  className={``} type="range" />
+                    <input value={volume}  min={0} max={1} step={0.1} onChange={(e)=> setVolume(e.target.value)}  className={``} type="range" />
                 </div>
                 
                 </div>
